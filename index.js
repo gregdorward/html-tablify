@@ -59,9 +59,9 @@ function tablify(options) {
       var value = json[key];
       var style = "";
       if (value === "Healthy") {
-        style = "#e6ffe6";
+        style = "background-color: #e6ffe6";
       } else if (value === "Unhealthy") {
-        style = "#ffe6e6";
+        style = "background-color: #ffe6e6";
       } else {
         style = "white";
       }
@@ -70,7 +70,7 @@ function tablify(options) {
       } else if (typeof value !== "string") {
         value = JSON.stringify(value);
       }
-      cellRow.push("<td>" + value + "</td>");
+      cellRow.push(`<td style="${style}; text-align: center"> ${value} </td>`);
     });
   });
 
