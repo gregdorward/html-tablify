@@ -63,7 +63,7 @@ function tablify(options) {
       } else if (value === "Unhealthy") {
         style = "background-color: #ffe6e6";
       } else {
-        style = "white";
+        style = "background-color: white";
       }
       if (value === undefined) {
         value = "";
