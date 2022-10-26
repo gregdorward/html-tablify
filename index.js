@@ -12,6 +12,8 @@ function tablify(options) {
   var border = isDefined(options.border) ? options.border : 1;
   var cellspacing = isDefined(options.cellspacing) ? options.cellspacing : 0;
   var cellpadding = isDefined(options.cellpadding) ? options.cellpadding : 0;
+  var background = "#e8e8e8"
+  var color = "black"
   var tableId = options.table_id || "tablify";
   var tableClass = options.table_class || "tablify";
   var header_mapping = options.header_mapping || {};
@@ -24,6 +26,9 @@ function tablify(options) {
     isSingleRow = true;
     tableData = [tableData];
   }
+
+  console.log("tableData")
+  console.log(tableData)
 
   // If header exists in options use that else create it.
   if (!Array.isArray(header)) {
@@ -59,14 +64,17 @@ function tablify(options) {
       var value = json[key];
       var style = "";
       if (value === "Healthy") {
-        style = "background-color: #e6ffe6";
+        style = "background-color: #e6ffe6; color: black";
       } else if (value === "Unhealthy") {
-        style = "background-color: #ffe6e6";
+        style = "background-color: #ffe6e6; color: black";
       } else {
-        style = "background-color: white";
+        style = "white; color: black";
       }
       if (value === undefined) {
         value = "";
+      } else if(typeof value === "object") {
+        value = value.join('    ')
+        console.log("TRIGGERED")
       } else if (typeof value !== "string") {
         value = JSON.stringify(value);
       }
@@ -105,6 +113,10 @@ function tablify(options) {
       cellspacing +
       '" cellpadding="' +
       cellpadding +
+      '"style="background-color:' +
+      background +
+      '; color:' +
+      color +
       '">';
     for (i = 0; i < cellArray.length; i++) {
       htmlTable += newLine;
